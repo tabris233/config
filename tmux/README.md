@@ -1,1 +1,1 @@
-tmux config
+tmux config is .tmux in GitHub.
