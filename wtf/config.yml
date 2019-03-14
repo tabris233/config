@@ -1,0 +1,178 @@
+wtf:
+  colors:
+    background: 
+    border:
+      focusable: darkslateblue
+      focused: orange
+      normal: "Light Gray"
+  grid:
+    columns: [28, 35,40,30]
+    rows: [9, 10,4]
+  refreshInterval: 1
+  openFileUtil: open 
+  mods:
+    clocks:
+      colors:
+        rows:
+          even: "lightblue"
+          odd: "white"
+      enabled: true
+      locations:
+        Avignon: "Europe/Paris"
+        Barcelona: "Europe/Madrid"
+        Dubai: "Asia/Dubai"
+        Vancouver: "America/Vancouver"
+        Toronto: "America/Toronto"
+        Shanghai: "Asia/Shanghai"
+      position:
+        top: 1
+        left: 0
+        height: 1
+        width: 1
+      refreshInterval: 15
+      sort: "alphabetical"
+    # security:
+    #   enabled: true
+    #   position:
+    #     top: 1
+    #     left: 0
+    #     height: 1
+    #     width: 1
+    #   refreshInterval: 3600
+    status:
+      enabled: true
+      position:
+        top: 2
+        left: 0
+        height: 1
+        width: 3
+      refreshInterval: 1
+    # system:
+    #   enabled: true
+    #   position:
+    #     top: 0
+    #     left: 1
+    #     height: 1
+    #     width: 1
+    #   refreshInterval: 3600
+    textfile:
+      enabled: false
+      filePath: "~/.config/wtf/config.yml"
+      position:
+        top: 1
+        left: 1
+        height: 1
+        width: 1
+      refreshInterval: 30
+    # bamboohr:
+    #   apiKey: "3276d7155dd9ee27b8b14f8743a408a9"
+    #   enabled: false
+    #   position:
+    #     top: 1
+    #     left: 1
+    #     height: 1
+    #     width: 1
+    #   refreshInterval: 900
+    #   subdomain: "testco"
+    todo:
+      checkedIcon: "X"
+      colors:
+        checked: gray
+        highlight:
+          fore: "black"
+          back: "orange"
+      enabled: true
+      filename: "todo.yml"
+      position:
+        top: 0
+        left: 2
+        height: 2
+        width: 1
+      refreshInterval: 1
+    prettyweather:
+      enabled: true
+      city: "Harbin"
+      position:
+        top: 0
+        left: 0
+        height: 1
+        width: 1
+      refreshInterval: 300
+      unit: "c"
+      view: 0
+      language: "zh"
+    git:
+      commitCount: 1
+      commitFormat: "[forestgreen]%h [grey]%cd [white]%s [grey]%an[white]"
+      dateFormat: "%H:%M %d %b %y"
+      enabled: false
+      position:
+        top: 2
+        left: 2
+        height: 1
+        width: 1
+      refreshInterval: 8
+      repositories:
+      - "/home/tabris/work/code/blog"
+    github:
+      apiKey: "3276d7155dd9ee27b8b14f8743a408a9"
+      baseURL: ""
+      enabled: false
+      enableStatus: true
+      position:
+        top: 2
+        left: 3
+        height: 2
+        width: 2
+      refreshInterval: 300
+      repositories:
+        wesker-api: "UmbrellaCorp"
+        wtf: "wtfutil"
+      uploadURL: ""
+      username: "wtfutil"
+    cmdrunner:
+      args: ["-V"]
+      cmd: "ipython"
+      enabled: true
+      position:
+        top: 1
+        left: 1
+        height: 1
+        width: 1
+      refreshInterval: 30
+      name: "asd"
+    resourceusage:
+      enabled: false
+      position:
+        top: 1
+        left: 1
+        height: 1
+        width: 1
+      refreshInterval: 1
+    bargraph:
+      enabled: false
+      position:
+        top: 1
+        left: 3
+        height: 1
+        width: 1
+      refreshInterval: 1
+    textfile:
+      enabled: false
+      position:
+        top: 2
+        left: 3
+        height: 1
+        width: 1
+      refreshInterval: 1
+    ipinfo:
+      colors:
+        name: orange
+        value: white
+      enabled: true
+      position:
+        top: 0
+        left: 1
+        height: 1
+        width: 1
+      refreshInterval: 150
