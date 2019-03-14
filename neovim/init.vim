@@ -39,7 +39,17 @@ Plug 'airblade/vim-gitgutter'                      "
 
 "Plug 'ap/vim-buftabline'                           " buffer line
 "Plug 'scrooloose/nerdtree'                         " 文件浏览器
-Plug 'shougo/vimfiler.vim'                         " file explorer
+"Plug 'shougo/vimfiler.vim'                         " file explorer
+if has('nvim')
+  Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/defx.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+Plug 'kristijanhusak/defx-git'
+Plug 'kristijanhusak/defx-icons'
+
 Plug 'majutsushi/tagbar'                           " 浏览tag
 Plug 'mg979/vim-visual-multi'                      " 多光标
 Plug 'mhinz/vim-startify'                          " start page
@@ -94,7 +104,7 @@ filetype plugin on
 filetype indent on
 
 " 设置空白字符的视觉提示
-set list listchars=extends:❯,precedes:❮,tab:▸\ ,trail:˽
+set list listchars=extends:❯,precedes:❮,tab:▸\ ,trail:˽,space:·
 
 " 高亮当前行列
 set cursorcolumn
@@ -233,43 +243,173 @@ let g:rainbow_conf = {
     \    }
     \}
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" vimfiler config
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 默认文件管理器更改成vimfiler
-let g:vimfiler_as_default_explorer = 1
-let g:vimfiler_tree_leaf_icon = '|'
-let g:vimfiler_tree_opened_icon = '▾'
-let g:vimfiler_tree_closed_icon = '▸'
-let g:vimfiler_file_icon = '-'
-let g:vimfiler_marked_file_icon = '*'
 
-let g:vimfiler_options_direction = 'right'
-
-call vimfiler#custom#profile('default', 'context', {
-      \ 'explorer' : 1,
-      \ 'winwidth' : 40,
-      \ 'winminwidth' : 30,
-      \ 'toggle' : 1,
-      \ 'auto_expand': 1,
-      \ 'direction' : 'rightbelow',
-      \ 'explorer_columns' : 'gitstatus',
-      \ 'parent': 0,
-      \ 'status' : 1,
-      \ 'safe' : 0,
-      \ 'split' : 1,
-      \ 'hidden': 1,
-      \ 'no_quit' : 1,
-      \ 'force_hide' : 0,
-      \ 'no_focus' : 1,
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" defx config
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+call defx#custom#column('size','')
+call defx#custom#column('filename', {
+      \ 'directory_icon': '▸',
+      \ 'opened_icon': '▾',
+      \ 'root_icon': ' ',
+      \ 'min_width': 30,
+      \ 'max_width': 30,
       \ })
-autocmd VimEnter * if ! argc()
+call defx#custom#column('mark', {
+      \ 'readonly_icon': '',
+      \ 'selected_icon': '',
+      \ })
+call defx#custom#option('_',{
+      \ 'columns'   : 'git:mark:filename:icons',
+      \ 'split'     : 'vertical',
+      \ 'direction' : 'botright',
+      \ 'winwidth'  : 45,
+      \ 'show_ignored_files': 0,
+      \ 'buffer_name': '',
+      \ 'toggle': 1,
+      \ 'resume': 1,
+      \ })
+"autocmd VimEnter * if ! argc()
                \ |   Startify
-               \ |   VimFiler
+               \ |   Defx
                \ | endif
 
 "
-autocmd BufEnter * if (!has('vim_starting') && winnr('$') == 1 && &filetype ==# 'vimfiler') | quit | endif
+autocmd BufEnter * if (!has('vim_starting') && winnr('$') == 1 && &filetype ==# 'defx') | quit | endif
+
+
+autocmd FileType defx call s:defx_my_settings()
+function! s:defx_my_settings() abort
+  setl nonumber
+  setl norelativenumber
+  setl listchars=
+
+  " Define mappings
+  nnoremap <silent><buffer><expr> <CR>
+  \ defx#do_action('open')
+  nnoremap <silent><buffer><expr> c
+  \ defx#do_action('copy')
+  nnoremap <silent><buffer><expr> m
+  \ defx#do_action('move')
+  nnoremap <silent><buffer><expr> p
+  \ defx#do_action('paste')
+  nnoremap <silent><buffer><expr> l
+  \ defx#do_action('open')
+  nnoremap <silent><buffer><expr> E
+  \ defx#do_action('open', 'vsplit')
+  nnoremap <silent><buffer><expr> P
+  \ defx#do_action('open', 'pedit')
+"  nnoremap <silent><buffer><expr> l
+  \ defx#do_action('open_or_close_tree')
+  nnoremap <silent><buffer><expr> K
+  \ defx#do_action('new_directory')
+  nnoremap <silent><buffer><expr> N
+  \ defx#do_action('new_file')
+  nnoremap <silent><buffer><expr> M
+  \ defx#do_action('new_multiple_files')
+  nnoremap <silent><buffer><expr> C
+  \ defx#do_action('toggle_columns',
+  \                'mark:filename:type:size:time')
+  nnoremap <silent><buffer><expr> S
+  \ defx#do_action('toggle_sort', 'time')
+  nnoremap <silent><buffer><expr> d
+  \ defx#do_action('remove')
+  nnoremap <silent><buffer><expr> r
+  \ defx#do_action('rename')
+  nnoremap <silent><buffer><expr> !
+  \ defx#do_action('execute_command')
+  nnoremap <silent><buffer><expr> x
+  \ defx#do_action('execute_system')
+  nnoremap <silent><buffer><expr> yy
+  \ defx#do_action('yank_path')
+  nnoremap <silent><buffer><expr> .
+  \ defx#do_action('toggle_ignored_files')
+  nnoremap <silent><buffer><expr> ;
+  \ defx#do_action('repeat')
+  nnoremap <silent><buffer><expr> h
+  \ defx#is_opened_tree() ? defx#do_action('close_tree') :defx#do_action('cd', ['..'])
+  nnoremap <silent><buffer><expr> ~
+  \ defx#do_action('cd')
+  nnoremap <silent><buffer><expr> q
+  \ defx#do_action('quit')
+  nnoremap <silent><buffer><expr> <Space>
+  \ defx#do_action('toggle_select') . 'j'
+  nnoremap <silent><buffer><expr> *
+  \ defx#do_action('toggle_select_all')
+  nnoremap <silent><buffer><expr> j
+  \ line('.') == line('$') ? 'gg' : 'j'
+  nnoremap <silent><buffer><expr> k
+  \ line('.') == 1 ? 'G' : 'k'
+  nnoremap <silent><buffer><expr> <C-l>
+  \ defx#do_action('redraw')
+  nnoremap <silent><buffer><expr> <C-g>
+  \ defx#do_action('print')
+  nnoremap <silent><buffer><expr> cd
+  \ defx#do_action('change_vim_cwd')
+endfunction
+"defx-git config
+let g:defx_git#indicators = {
+  \ 'Modified'  : '✹',
+  \ 'Staged'    : '✚',
+  \ 'Untracked' : '✭',
+  \ 'Renamed'   : '➜',
+  \ 'Unmerged'  : '═',
+  \ 'Ignored'   : '☒',
+  \ 'Deleted'   : '✖',
+  \ 'Unknown'   : '?',
+  \ }
+
+let g:defx_git#column_length = 1
+let g:defx_git#raw_mode = 1
+" defx-icons config 
+let g:defx_icons_enable_syntax_highlight = 1
+let g:defx_icons_column_length = 2
+let g:defx_icons_directory_icon = ''
+let g:defx_icons_mark_icon = '*'
+let g:defx_icons_parent_icon = ''
+let g:defx_icons_default_icon = ''
+let g:defx_icons_directory_symlink_icon = ''
+" Options below are applicable only when using "tree" feature
+let g:defx_icons_root_opened_tree_icon = ''
+let g:defx_icons_nested_opened_tree_icon = ''
+let g:defx_icons_nested_closed_tree_icon = ''
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" vimfiler config
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" 默认文件管理器更改成vimfiler
+"let g:vimfiler_as_default_explorer = 1
+"let g:vimfiler_tree_leaf_icon = '|'
+"let g:vimfiler_tree_opened_icon = '▾'
+"let g:vimfiler_tree_closed_icon = '▸'
+"let g:vimfiler_file_icon = '-'
+"let g:vimfiler_marked_file_icon = '*'
+"
+"let g:vimfiler_options_direction = 'right'
+"
+"call vimfiler#custom#profile('default', 'context', {
+"      \ 'explorer' : 1,
+"      \ 'winwidth' : 40,
+"      \ 'winminwidth' : 30,
+"      \ 'toggle' : 1,
+"      \ 'auto_expand': 1,
+"      \ 'direction' : 'rightbelow',
+"      \ 'explorer_columns' : 'gitstatus',
+"      \ 'parent': 0,
+"      \ 'status' : 1,
+"      \ 'safe' : 0,
+"      \ 'split' : 1,
+"      \ 'hidden': 1,
+"      \ 'no_quit' : 1,
+"      \ 'force_hide' : 0,
+"      \ 'no_focus' : 1,
+"      \ })
+"autocmd VimEnter * if ! argc()
+"               \ |   Startify
+"               \ |   VimFiler
+"               \ | endif
+"
+""
+"autocmd BufEnter * if (!has('vim_starting') && winnr('$') == 1 && &filetype ==# 'vimfiler') | quit | endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " rainbow config
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -314,7 +454,7 @@ let g:startify_custom_header_quotes = [
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " syntastic config
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:syntastic_error_symbol = '✗'	"set error or warning signs
+let g:syntastic_error_symbol = '✗'"set error or warning signs
 let g:syntastic_warning_symbol = '⚠'
 let g:syntastic_check_on_open=1
 let g:syntastic_enable_highlighting = 0
@@ -327,7 +467,7 @@ let g:syntastic_cpp_remove_include_errors = 1
 let g:syntastic_cpp_check_header = 1
 let g:syntastic_cpp_compiler = 'clang++'
 let g:syntastic_cpp_compiler_options = '-std=c++11 -stdlib=libstdc++'
-let g:syntastic_enable_balloons = 1	"whether to show balloons
+let g:syntastic_enable_balloons = 1"whether to show balloons
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

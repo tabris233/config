@@ -9,3 +9,6 @@ vim/neovim config is SpaceVim.
 TODOLIST:
 - tabline,airline index
 - keyboard map
+- defx.nvim keyboard map
+- defx.nvim set to default file explore
+- `vi` to both startify and defx.nvim
