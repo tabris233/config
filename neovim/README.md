@@ -7,6 +7,5 @@ vim/neovim config is SpaceVim.
 
 
 TODOLIST:
-- vimfiler 最后的时候默认关闭.
-- nvim命令后 默认打开startify和vimfiler
-:
+- tabline,airline index
+- keyboard map
