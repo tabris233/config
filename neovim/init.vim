@@ -27,7 +27,17 @@ call plug#begin('~/.config/nvim/autoload')
 Plug 'yianwillis/vimcdoc'                          " Chinese help
 
 Plug 'shougo/unite.vim'
-Plug 'Shougo/deoplete.nvim'                        " 代码补全
+"Plug 'Shougo/deoplete.nvim'                        " 代码补全
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+"Plug 'tenfyzhong/CompleteParameter.vim'
+Plug 'Shougo/deoplete-clangx'
+Plug 'Shougo/deol.nvim'
 Plug 'jiangmiao/auto-pairs'                         " 括号自动补全
 Plug 'tpope/vim-surround'
 Plug 'scrooloose/syntastic'                        " 静态代码分析
@@ -469,11 +479,16 @@ let g:syntastic_cpp_compiler = 'clang++'
 let g:syntastic_cpp_compiler_options = '-std=c++11 -stdlib=libstdc++'
 let g:syntastic_enable_balloons = 1"whether to show balloons
 
-
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" deoplete config 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:deoplete#enable_at_startup = 1 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " keyboard map
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 ca w!! w !sudo tee "%"
+
+tnoremap <ESC>    <C-\><C-n>
 
 "去行首空格
 ":%s/^\s\+
