@@ -40,7 +40,7 @@ wtf:
     #     width: 1
     #   refreshInterval: 3600
     status:
-      enabled: true
+      enabled: false
       position:
         top: 2
         left: 0
@@ -85,10 +85,10 @@ wtf:
       filename: "todo.yml"
       position:
         top: 0
-        left: 2
-        height: 2
+        left: 3
+        height: 3
         width: 1
-      refreshInterval: 1
+      refreshInterval: 100
     prettyweather:
       enabled: true
       city: "Harbin"
@@ -114,32 +114,16 @@ wtf:
       refreshInterval: 8
       repositories:
       - "/home/tabris/work/code/blog"
-    github:
-      apiKey: "3276d7155dd9ee27b8b14f8743a408a9"
-      baseURL: ""
-      enabled: false
-      enableStatus: true
-      position:
-        top: 2
-        left: 3
-        height: 2
-        width: 2
-      refreshInterval: 300
-      repositories:
-        wesker-api: "UmbrellaCorp"
-        wtf: "wtfutil"
-      uploadURL: ""
-      username: "wtfutil"
     cmdrunner:
-      args: ["-V"]
-      cmd: "ipython"
+      args: ["-c3","www.google.com"]
+      cmd: "ping"
       enabled: true
       position:
         top: 1
         left: 1
         height: 1
-        width: 1
-      refreshInterval: 30
+        width: 2
+      refreshInterval: 300
       name: "asd"
     resourceusage:
       enabled: false
@@ -176,3 +160,22 @@ wtf:
         height: 1
         width: 1
       refreshInterval: 150
+    gitter:
+      apiToken: "ab345546asdfasb465234fgjgh068f39a35c3e4139ee383f7"
+      enabled: false
+      numberOfMessages: 10
+      position:
+        top: 4
+        left: 1
+        height: 1
+        width: 4
+      roomUri: wtfutil/Lobby
+      refreshInterval: 300
+    power:
+      enabled: true
+      position:
+        top: 0
+        left: 2
+        height: 1
+        width: 1
+      refreshInterval: 15

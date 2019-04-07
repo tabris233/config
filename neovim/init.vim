@@ -309,7 +309,7 @@ function! s:defx_my_settings() abort
   \ defx#do_action('open', 'vsplit')
   nnoremap <silent><buffer><expr> P
   \ defx#do_action('open', 'pedit')
-"  nnoremap <silent><buffer><expr> l
+  nnoremap <silent><buffer><expr> o
   \ defx#do_action('open_or_close_tree')
   nnoremap <silent><buffer><expr> K
   \ defx#do_action('new_directory')
@@ -384,7 +384,8 @@ let g:defx_icons_root_opened_tree_icon = ''
 let g:defx_icons_nested_opened_tree_icon = ''
 let g:defx_icons_nested_closed_tree_icon = ''
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" vimfiler config
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vimfiler config
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" 默认文件管理器更改成vimfiler
 "let g:vimfiler_as_default_explorer = 1
@@ -482,7 +483,7 @@ let g:syntastic_enable_balloons = 1"whether to show balloons
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " deoplete config 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:deoplete#enable_at_startup = 1 
+let g:deoplete#enable_at_startup = 1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " keyboard map
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

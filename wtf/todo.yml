@@ -1,0 +1,20 @@
+selected: 6
+items:
+- checked: false
+  text: 'c++: const 用法'
+- checked: false
+  text: 了解什么是单元测试
+- checked: false
+  text: 学习Vim操作命令
+- checked: false
+  text: 学习C++
+- checked: false
+  text: 学习多线/进程编程
+- checked: false
+  text: 学习docker
+- checked: false
+  text: 背单词
+- checked: false
+  text: 准备毕业设计
+- checked: true
+  text: 想开发一个高度可定制化的docker命令行管理软件
