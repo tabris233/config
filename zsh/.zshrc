@@ -1,9 +1,10 @@
-source /home/tabris/.change_term.sh
+# source /home/tabris/.change_term.sh
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-  export ZSH="/home/tabris/.oh-my-zsh"
+export ZSH="/home/tabris/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -64,10 +65,9 @@ ZSH_THEME="agnoster"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git
-  archlinux
-  z
-  pip
+#  git
+#  archlinux
+#  pip
   sudo
   zsh-autosuggestions
   zsh-syntax-highlighting
@@ -107,8 +107,12 @@ alias q=exit
 alias tmux="tmux -u"
 alias vi=nvim
 alias vim=nvim
-
+alias nvi=nvim
+alias mux=tmuxinator
+alias tpg="mux s topPage"
+alias fy=trans
 
 eval $(thefuck --alias)
+
 source $HOME/.tmuxinator/.tmuxinator.zsh
-export EDITOR='vim'
+export EDITOR='nvim'
