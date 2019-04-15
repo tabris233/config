@@ -1,10 +1,13 @@
 echo "=============================="
 echo "Begin to config zsh"
-
-echo "Installing oh-my-zsh"
-sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-echo "Installed oh-my-zsh"
-
+if test -d ~/.oh-my-zsh
+then
+	echo 'oh-my-zsh already install'
+else
+	echo "Installing oh-my-zsh"
+	sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+	echo "Installed oh-my-zsh"
+fi
 echo "add .zshrc to ~/"
 cp ./.zshrc ~/
 echo "create dir: ~/.tmuxinator/.tmuxinator.zsh"
