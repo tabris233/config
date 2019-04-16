@@ -18,36 +18,38 @@ SyncFont  (){
 }
 SyncNeovim(){
     echo "(${FUNCNAME[@]})"
-    if OnlyConfigFile == true && test -e ~/.config/nvim/init.vim; then
+    if $OnlyConfigFile == true && test -e ~/.config/nvim/init.vim; then
         echo "cp ~/.config/nvim/init.vim ./neovim"
         cp ~/.config/nvim/init.vim ./neovim
     elif test -d ~/.config/nvim ;then
-        echo "cp ~/.config/nvim ./neovim"
-        cp ~/.config/nvim ./neovim
+        echo "rm -rf ./neovim/nvim && cp -r ~/.config/nvim ./neovim"
+        rm -rf ./neovim/nvim
+        cp -r ~/.config/nvim ./neovim
     fi
 }
 SyncTmux  (){
     # TODO
     echo "(${FUNCNAME[@]})"
-
-    if OnlyConfigFile == true && test -e ~/.config/nvim/init.vim; then
+    return 
+    if $OnlyConfigFile == true && test -e ~/.tmuxinator; then
         echo "cp ~/.config/nvim/init.vim ./neovim"
         cp ~/.config/nvim/init.vim ./neovim
     elif test -d ~/.config/nvim ;then
-        echo "cp ~/.config/nvim ./neovim"
-        cp ~/.config/nvim ./neovim
+        echo "cp -r ~/.config/nvim ./neovim"
+        cp -r ~/.config/nvim ./neovim
     fi
 
 }
 Syncwtf   (){
     echo "(${FUNCNAME[@]})"
 
-    if OnlyConfigFile == true && test -e ~/.config/wtf; then
+    if $OnlyConfigFile == true && test -e ~/.config/wtf; then
         echo "cp ~/.config/wtf/config.yml ./wtf"
         cp ~/.config/wtf/config.yml ./wtf
     elif test -d ~/.config/wtf;then
-        echo "cp ~/.config/wtf ./wtf"
-        cp ~/.config/wtf ./wtf
+        echo "rm -rf ./wtf/wtf &&  cp -r ~/.config/wtf ./wtf"
+        rm -rf ./wtf/wtf
+        cp -r ~/.config/wtf ./wtf
     fi
 }
 SyncZsh   (){
@@ -58,29 +60,29 @@ SyncZsh   (){
         cp ~/.zshrc ./zsh
     fi
 
-    if OnlyConfigFile == true ; then
+    if $OnlyConfigFile == true ; then
         return
     else
         if test -d ~/.tmuxinator;then
-            echo "cp ~/.config/nvim/init.vim ./zsh"
-            cp ~/.tmuxinator ./zsh
+            echo "rm -rf ./zsh/.tmuxinator && cp -r ~/.config/nvim/init.vim ./zsh"
+            rm -rf ./zsh/.tmuxinator
+            cp -r ~/.tmuxinator ./zsh
         fi
         if test -d ~/.oh-my-zsh;then
-            echo "cp ~/.oh-my-zsh ./zsh"
-            cp ~/.oh-my-zsh ./zsh
+            echo "rm -rf ./zsh/.oh-my-zsh && cp -r ~/.oh-my-zsh ./zsh"
+            rm -rf ./zsh/.oh-my-zsh
+            cp -r ~/.oh-my-zsh ./zsh
         fi
     fi
 }
 #SyncConky(){echo "${FUNCNAME[@]})"}
 
 start(){
-
     SyncConky
     SyncFont
     SyncNeovim
     SyncTmux
     Syncwtf
     SyncZsh
-
 }
 start
