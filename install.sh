@@ -1,10 +1,10 @@
+#!/bin/sh
 ########################################
-# this is TODO
+# this is need TODO
 ########################################
 
 exit
 
-#!/bin/sh
 
 # create install array
 
