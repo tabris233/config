@@ -35,6 +35,7 @@ else
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
+Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
 "Plug 'tenfyzhong/CompleteParameter.vim'
 Plug 'Shougo/deoplete-clangx'
 Plug 'Shougo/deol.nvim'
@@ -484,9 +485,16 @@ let g:syntastic_cpp_compiler_options = '-std=c++11 -stdlib=libstdc++'
 let g:syntastic_enable_balloons = 1"whether to show balloons
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" deoplete config 
+" deoplete config
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:deoplete#enable_at_startup = 1
+
+" tbodt/deoplete-tabnine
+call deoplete#custom#var('tabnine', {
+            \ 'line_limit': 500,
+            \ 'max_num_results': 20,
+            \ })
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " keyboard map
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
