@@ -23,11 +23,11 @@ endif
 " Obscure hacks done, you can now modify the rest of the .vimrc as you wish :)
 " ============================================================================
 call plug#begin('~/.config/nvim/autoload')
-" other plugins
+
 Plug 'yianwillis/vimcdoc'                          " Chinese help
 
 Plug 'shougo/unite.vim'
-"Plug 'Shougo/deoplete.nvim'                        " 代码补全
+" 代码补全
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 else
@@ -47,8 +47,9 @@ Plug 'scrooloose/syntastic'                        " 静态代码分析
 Plug 'tpope/vim-fugitive'                          " git plugin
 Plug 'airblade/vim-gitgutter'                      "
 
+Plug 'Yggdroot/indentLine'                         " 
 
-"Plug 'ap/vim-buftabline'                           " buffer line
+
 "Plug 'scrooloose/nerdtree'                         " 文件浏览器
 "Plug 'shougo/vimfiler.vim'                         " file explorer
 if has('nvim')
@@ -261,11 +262,13 @@ let g:rainbow_conf = {
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " defx config
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call defx#custom#column('size','')
-call defx#custom#column('filename', {
-      \ 'directory_icon': '▸',
-      \ 'opened_icon': '▾',
+"call defx#custom#column('size','')
+call defx#custom#column('icon', {
+      \ 'directory_icon': '',
+      \ 'opened_icon': '',
       \ 'root_icon': ' ',
+      \ })
+call defx#custom#column('filename', {
       \ 'min_width': 30,
       \ 'max_width': 30,
       \ })
@@ -274,9 +277,9 @@ call defx#custom#column('mark', {
       \ 'selected_icon': '',
       \ })
 call defx#custom#option('_',{
-      \ 'columns'   : 'git:mark:filename:icons',
+      \ 'columns'   : 'git:mark:indent:icon:filename:icons',
       \ 'split'     : 'vertical',
-      \ 'direction' : 'botright',
+      \ 'direction' : 'rightbelow',
       \ 'winwidth'  : 45,
       \ 'show_ignored_files': 0,
       \ 'buffer_name': '',
