@@ -12,3 +12,5 @@ TODOLIST:
 - defx.nvim keyboard map
 - defx.nvim set to default file explore
 - `vi` to both startify and defx.nvim
+
+- 子目录脚本可单独执行同时也支持根目录屌启
