@@ -50,8 +50,6 @@ Plug 'airblade/vim-gitgutter'                      "
 Plug 'Yggdroot/indentLine'                         " 
 
 
-"Plug 'scrooloose/nerdtree'                         " 文件浏览器
-"Plug 'shougo/vimfiler.vim'                         " file explorer
 if has('nvim')
   Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
 else
@@ -62,16 +60,14 @@ endif
 Plug 'kristijanhusak/defx-git'
 Plug 'kristijanhusak/defx-icons'
 
-Plug 'majutsushi/tagbar'                           " 浏览tag
+Plug 'liuchengxu/vista.vim'                        " tagbar 超集替代品
 Plug 'mg979/vim-visual-multi'                      " 多光标
 Plug 'mhinz/vim-startify'                          " start page
 Plug 'neomake/neomake'                             " 语法检查
 Plug 'luochen1990/rainbow'                         " 彩虹括号
 
-Plug 'https://github.com/vim-scripts/fcitx.vim.git'" 输入法状态切换
+Plug 'vim-scripts/fcitx.vim'" 输入法状态切换
 " color/scheme/
-"Plug 'chxuan/change-colorscheme'                   " 主题切换插件
-Plug 'icymind/NeoSolarized'
 Plug 'vim-airline/vim-airline'                     " 状态栏工具
 Plug 'vim-airline/vim-airline-themes'              " 状态栏主题
 Plug 'guns/xterm-color-table.vim'                  " 
