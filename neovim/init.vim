@@ -96,6 +96,7 @@ set encoding=utf-8
 
 " 自动折行
 set linebreak
+set fdm=manual
 set nowrap
 "垂直滚动时，光标距离顶部/底部的位置（单位：行）。
 set scrolloff=5
@@ -228,6 +229,8 @@ let g:tagbar_type_go = {
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " rainbow config
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" 默认开启彩虹括号
+let g:rainbow_active = 1
 let g:rainbow_conf = {
     \    'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
     \    'ctermfgs': ['lightblue', 'lightyellow', 'lightcyan', 'lightmagenta'],
@@ -284,7 +287,9 @@ autocmd BufEnter * if (!has('vim_starting') && winnr('$') == 1 && &filetype ==# 
 autocmd VimEnter * call s:welcome()
 " autocmd FileType startify :Defx
 function s:welcome()
-  " TODO don't enter startify when open a file 
+  if argc()
+      return
+  endif
   if exists(':Startify') == 2
     Startify
     if isdirectory(bufname(1))
@@ -514,11 +519,7 @@ let g:defx_icons_nested_closed_tree_icon = ''
 "
 ""
 "autocmd BufEnter * if (!has('vim_starting') && winnr('$') == 1 && &filetype ==# 'vimfiler') | quit | endif
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" rainbow config
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 默认开启彩虹括号
-let g:rainbow_active = 1
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " startify config
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
