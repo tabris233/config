@@ -101,7 +101,13 @@ set encoding=utf-8
 
 " 自动折行
 set linebreak
-set fdm=manual
+set foldenable
+set fdm=marker
+augroup remember_folds
+  autocmd!
+  autocmd BufWinLeave * silent! mkview
+  autocmd BufWinEnter * silent! loadview
+augroup END
 set nowrap
 "垂直滚动时，光标距离顶部/底部的位置（单位：行）。
 set scrolloff=5
@@ -167,10 +173,7 @@ let g:airline#extensions#tabline#right_sep = '⮂'
 let g:airline#extensions#tabline#right_alt_sep = '⮃'
 let g:airline_theme='one'
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Tagbar config
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
+" Tagbar config {{{1
 " toggle tagbar display
 map <F4> :TagbarToggle<CR>
 " autofocus on tagbar open
@@ -202,11 +205,11 @@ let g:tagbar_type_go = {
     \ 'ctagsbin'  : 'gotags',
     \ 'ctagsargs' : '-sort -silent'
 \ }
-
+" }}}1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " rainbow config
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 默认开启彩虹括号
+" 默认开启彩虹括号 {{{
 let g:rainbow_active = 1
 let g:rainbow_conf = {
     \    'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
@@ -230,12 +233,9 @@ let g:rainbow_conf = {
     \        'css': 0,
     \    }
     \}
+" }}}
 
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" defx config
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"call defx#custom#column('size','')
+" defx config {{{
 call defx#custom#column('icon', {
       \ 'directory_icon': '',
       \ 'opened_icon': '',
@@ -461,7 +461,7 @@ let g:defx_icons_directory_symlink_icon = ''
 let g:defx_icons_root_opened_tree_icon = ''
 let g:defx_icons_nested_opened_tree_icon = ''
 let g:defx_icons_nested_closed_tree_icon = ''
-
+" }}}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vimfiler config
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
