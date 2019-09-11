@@ -48,6 +48,7 @@ Plug 'tpope/vim-fugitive'                          " git plugin
 Plug 'airblade/vim-gitgutter'                      "
 
 Plug 'Yggdroot/indentLine'                         " 
+Plug 't9md/vim-choosewin'
 
 
 if has('nvim')
@@ -283,6 +284,7 @@ autocmd BufEnter * if (!has('vim_starting') && winnr('$') == 1 && &filetype ==# 
 autocmd VimEnter * call s:welcome()
 " autocmd FileType startify :Defx
 function s:welcome()
+  " TODO don't enter startify when open a file 
   if exists(':Startify') == 2
     Startify
     if isdirectory(bufname(1))
