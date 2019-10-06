@@ -98,6 +98,7 @@ set background=dark " for the dark version
 colorscheme one
 
 set encoding=utf-8
+set fileformat=unix
 
 " 自动折行
 set linebreak
