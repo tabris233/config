@@ -1,3 +1,4 @@
+let g:python3_host_prog='/usr/local/bin/python3'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-plug plugin manager
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -38,7 +39,10 @@ Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
 "Plug 'tenfyzhong/CompleteParameter.vim'
 Plug 'Shougo/deoplete-clangx'
 Plug 'deoplete-plugins/deoplete-jedi'              " python 语法提示
-Plug 'Shougo/deol.nvim'
+Plug 'zchee/deoplete-zsh'
+Plug 'Shougo/deol.nvim'                            " shell
+"Plug 'neoclide/coc.nvim', {'branch': 'release'}    " coc intellisense
+
 Plug 'jiangmiao/auto-pairs'                        " 括号自动补全
 Plug 'tpope/vim-surround'
 Plug 'scrooloose/syntastic'                        " 静态代码分析
@@ -98,7 +102,6 @@ set background=dark " for the dark version
 colorscheme one
 
 set encoding=utf-8
-set fileformat=unix
 
 " 自动折行
 set linebreak
@@ -113,7 +116,7 @@ set nowrap
 "垂直滚动时，光标距离顶部/底部的位置（单位：行）。
 set scrolloff=5
 
-"set textwidth=80
+set textwidth=80
 " tabs and spaces handling
 set expandtab
 set tabstop=4
@@ -145,6 +148,8 @@ set spell spelllang=en_us
 
 " 自动切换工作目录。这主要用在一个 Vim 会话之中打开多个文件的情况，默认的工作目录是打开的第一个文件的目录。该配置可以将工作目录自动切换到，正在编辑的文件的目录。
 set autochdir
+
+" 隐藏字符
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Airline config
@@ -463,43 +468,6 @@ let g:defx_icons_root_opened_tree_icon = ''
 let g:defx_icons_nested_opened_tree_icon = ''
 let g:defx_icons_nested_closed_tree_icon = ''
 " }}}
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" vimfiler config
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" 默认文件管理器更改成vimfiler
-"let g:vimfiler_as_default_explorer = 1
-"let g:vimfiler_tree_leaf_icon = '|'
-"let g:vimfiler_tree_opened_icon = '▾'
-"let g:vimfiler_tree_closed_icon = '▸'
-"let g:vimfiler_file_icon = '-'
-"let g:vimfiler_marked_file_icon = '*'
-"
-"let g:vimfiler_options_direction = 'right'
-"
-"call vimfiler#custom#profile('default', 'context', {
-"      \ 'explorer' : 1,
-"      \ 'winwidth' : 40,
-"      \ 'winminwidth' : 30,
-"      \ 'toggle' : 1,
-"      \ 'auto_expand': 1,
-"      \ 'direction' : 'rightbelow',
-"      \ 'explorer_columns' : 'gitstatus',
-"      \ 'parent': 0,
-"      \ 'status' : 1,
-"      \ 'safe' : 0,
-"      \ 'split' : 1,
-"      \ 'hidden': 1,
-"      \ 'no_quit' : 1,
-"      \ 'force_hide' : 0,
-"      \ 'no_focus' : 1,
-"      \ })
-"autocmd VimEnter * if ! argc()
-"               \ |   Startify
-"               \ |   VimFiler
-"               \ | endif
-"
-""
-"autocmd BufEnter * if (!has('vim_starting') && winnr('$') == 1 && &filetype ==# 'vimfiler') | quit | endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " startify config
@@ -558,13 +526,13 @@ let g:syntastic_enable_balloons = 1"whether to show balloons
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " deoplete config
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:deoplete#enable_at_startup = 1
-
-" tbodt/deoplete-tabnine
-call deoplete#custom#var('tabnine', {
-            \ 'line_limit': 500,
-            \ 'max_num_results': 20,
-            \ })
+"let g:deoplete#enable_at_startup = 1
+"
+"" tbodt/deoplete-tabnine
+"call deoplete#custom#var('tabnine', {
+"            \ 'line_limit': 500,
+"            \ 'max_num_results': 20,
+"            \ })
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " keyboard map
