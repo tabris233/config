@@ -1,0 +1,7 @@
+"模块化配置
+source ~/.config/nvim/core/general_config.nvim
+source ~/.config/nvim/core/key_binding.nvim
+source ~/.config/nvim/core/special_config.nvim
+" source ~/.config/nvim/core/language_config.nvim
+source ~/.config/nvim/plug/plug_list.nvim
+source ~/.config/nvim/theme/theme.nvim

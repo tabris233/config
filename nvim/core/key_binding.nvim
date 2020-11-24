@@ -6,7 +6,7 @@
 " < h   l >
 "     j
 "     v
-let mapleader=" "  
+let mapleader=" "
 
 noremap = nzz
 noremap - Nzz
@@ -41,3 +41,11 @@ map <LEADER>sc :set spell!<CR>
 map <LEADER><LEADER> <ESC>/<++><CR>:nohlsearch<CR>j4d
 
 vnoremap <C-c> "+y
+
+" 非root用户打开保存
+ca w!! w !sudo tee "%"
+
+"去行首空格
+":%s/^\s\+
+"去行末空格
+":%s/\s\+$

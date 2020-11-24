@@ -1,0 +1,52 @@
+" tabs and spaces handling
+set expandtab
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+
+" 侦测文件类型
+filetype on
+
+" 载入文件类型插件
+filetype plugin on
+
+" 为特定文件类型载入相关缩进文件
+filetype indent on
+
+
+
+" Base Settings {{{
+set encoding=utf-8  " 编码格式 UTF-8
+set ignorecase      " 搜索时忽略大小写。
+set smartcase       " 如果同时打开了ignorecase，那么对于只有一个大写字母的搜索词，将大小写敏感；
+                    " 其他情况都是大小写不敏感。比如，搜索Test时，将不匹配test；搜索test时，将匹配Test。
+
+set spell spelllang=en_us " 打开英语单词的拼写检查。
+
+set autochdir       " 自动切换工作目录。这主要用在一个 Vim 会话之中打开多个文件的情况，
+                    " 默认的工作目录是打开的第一个文件的目录。该配置可以将工作目录自动切换到，正在编辑的文件的目录。
+
+set textwidth=120   "
+" }}}
+
+
+" Editor UI {{{
+set nowrap
+set number             " 展示行号
+set relativenumber     " 展示相对行号
+" set noshowmode          " Don't show mode on bottom
+" set noruler             " Disable default status ruler
+
+set cursorline        " 高亮当前行
+set cursorcolumn      " 高亮当前列
+
+set scrolloff=5       " 垂直滚动时，光标距离顶部/底部的位置（单位：行）。
+set list
+set listchars=extends:❯,precedes:❮,trail:˽,nbsp:+,space:·,tab:»·
+
+set title             " title length
+
+let &g:titlestring="
+          \ %{expand('%:p:~:.')}%(%m%r%w%)
+          \ %<\[%{fnamemodify(getcwd(), ':~')}\] - Neovim"  " title string
+" }}}
