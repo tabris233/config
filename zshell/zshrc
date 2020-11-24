@@ -48,6 +48,7 @@ zinit snippet OMZL::completion.zsh
 # load (Git, sudo) Plugin from OMZ
 zinit snippet OMZP::git
 zinit snippet OMZP::sudo
+zinit snippet OMZP::command-not-found
 
 
 zinit ice depth=1; zinit light romkatv/powerlevel10k
@@ -68,10 +69,6 @@ alias vi=nvim
 alias vim=nvim
 alias nvi=nvim
 
-alias mux=tmuxinator
-alias tpg="mux s topPage"
-
-alias fy=trans
 alias tree="tree -N"
 alias c=clear
 alias rm='trash'
@@ -79,14 +76,7 @@ alias ls='lsd'
 
 ### End of aliases
 
-eval $(thefuck --alias)
-
 export EDITOR='nvim'
-
-### nvm is slow, replace by n.
-#export NVM_DIR="$HOME/.nvm"
-#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-#[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
