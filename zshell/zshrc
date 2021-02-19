@@ -1,14 +1,14 @@
 [[ -f $HOME/.custom.sh ]] || touch $HOME/.custom.sh
 source $HOME/.custom.sh
 
-if["$(uname)"=="Darwin"];then
+if [[ "$(uname)" == "Darwin" ]]; then
 # Mac OS X 操作系统
-elif["$(expr substr $(uname -s) 1 5)"=="Linux"];then   
+elif [[ "$(expr substr $(uname -s) 1 5)" == "Linux" ]]; then
 # GNU/Linux操作系统
   HISTFILE=$HOME/.zsh_history
   HISTSIZE=10000
   SAVEHIST=10000
-elif["$(expr substr $(uname -s) 1 10)"=="MINGW32_NT"];then    
+elif [["$(expr substr $(uname -s) 1 10)" == "MINGW32_NT" ]]; then
 # Windows NT操作系统
 fi
 
