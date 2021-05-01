@@ -1,7 +1,16 @@
-if [[ ! -f $HOME/.custom.sh ]]; then
-  touch $HOME/.custom.sh
-fi
+[[ -f $HOME/.custom.sh ]] || touch $HOME/.custom.sh
 source $HOME/.custom.sh
+
+if [[ "$(uname)" == "Darwin" ]]; then
+# Mac OS X 操作系统
+elif [[ "$(expr substr $(uname -s) 1 5)" == "Linux" ]]; then
+# GNU/Linux操作系统
+  HISTFILE=$HOME/.zsh_history
+  HISTSIZE=10000
+  SAVEHIST=10000
+elif [["$(expr substr $(uname -s) 1 10)" == "MINGW32_NT" ]]; then
+# Windows NT操作系统
+fi
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -80,3 +89,17 @@ export EDITOR='nvim'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# n: node version manager
+[[ -d $HOME/n ]] || curl -L https://git.io/n-install | bash
+export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
+
+# pyenv: python version manager
+[[ -d $HOME/.pyenv ]] || curl https://pyenv.run | bash
+export PATH="$HOME/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+
+# rbenv: ruby version manager
+[[ -d $HOME/.rbenv ]] || curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-installer | bash
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
