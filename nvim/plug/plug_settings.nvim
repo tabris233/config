@@ -9,3 +9,4 @@ source ~/.config/nvim/plug/plug_settings/defx.nvim
 source ~/.config/nvim/plug/plug_settings/dashboard-nvim.nvim
 source ~/.config/nvim/plug/plug_settings/indentline.nvim
 source ~/.config/nvim/plug/plug_settings/vim-choosewin.nvim
+source ~/.config/nvim/plug/plug_settings/rnvimr.nvim

@@ -30,6 +30,7 @@ Plug 'rhysd/accelerated-jk', {'on':['<Plug>(accelerated_jk_gj)' , '<Plug>(accele
 
 Plug 'chrisbra/changesPlugin'                      " 查看文件修改
 
+Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0, 'export PATH=\"$PATH\"') } }
 
 " 代码补全
 Plug 'neoclide/coc.nvim', {'branch': 'release'}    " coc intellisense
@@ -44,6 +45,8 @@ Plug 'airblade/vim-gitgutter'                      "
 Plug 'Yggdroot/indentLine'                         " 展示<tab>的竖线
 Plug 't9md/vim-choosewin'                          " 选择window 主要给defx用
 
+
+Plug 'kevinhwang91/rnvimr'
 
 if has('nvim')
   Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
