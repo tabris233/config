@@ -103,3 +103,5 @@ eval "$(pyenv init -)"
 [[ -d $HOME/.rbenv ]] || curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-installer | bash
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
+
+export PATH="/usr/local/opt/llvm/bin:$PATH"
