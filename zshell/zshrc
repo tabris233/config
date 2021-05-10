@@ -1,16 +1,13 @@
 [[ -f $HOME/.custom.sh ]] || touch $HOME/.custom.sh
 source $HOME/.custom.sh
 
-if [[ "$(uname)" == "Darwin" ]]; then
-# Mac OS X 操作系统
-elif [[ "$(expr substr $(uname -s) 1 5)" == "Linux" ]]; then
-# GNU/Linux操作系统
-  HISTFILE=$HOME/.zsh_history
-  HISTSIZE=10000
-  SAVEHIST=10000
-elif [["$(expr substr $(uname -s) 1 10)" == "MINGW32_NT" ]]; then
-# Windows NT操作系统
-fi
+# if [[ "$(uname)" == "Darwin" ]]; then
+# # Mac OS X 操作系统
+# elif [[ "$(expr substr $(uname -s) 1 5)" == "Linux" ]]; then
+# # GNU/Linux操作系统
+# elif [["$(expr substr $(uname -s) 1 10)" == "MINGW32_NT" ]]; then
+# # Windows NT操作系统
+# fi
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -51,6 +48,7 @@ zinit wait lucid light-mode for \
 
 # load OMZ Git Library
 zinit snippet OMZL::git.zsh
+zinit snippet OMZL::history.zsh
 zinit snippet OMZL::directories.zsh
 zinit snippet OMZL::completion.zsh
 
@@ -82,6 +80,8 @@ alias tree="tree -N"
 alias c=clear
 alias rm='trash'
 alias ls='lsd'
+
+unalias g
 
 ### End of aliases
 
