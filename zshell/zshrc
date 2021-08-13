@@ -37,8 +37,9 @@ autoload -Uz _zinit
 #    zinit-zsh/z-a-patch-dl \
 #    zinit-zsh/z-a-bin-gem-node
 
+#  atinit"autoload -Uz compaudit compinit && compinit; zicdreplay" \
 zinit wait lucid light-mode for \
-  atinit"autoload -Uz compaudit compinit && compinit; zicdreplay" \
+  atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
       zdharma/fast-syntax-highlighting \
   atload"_zsh_autosuggest_start" \
       zsh-users/zsh-autosuggestions \
@@ -100,7 +101,7 @@ eval "$(nodenv init -)"
 eval "$(pyenv init -)"
 
 # rbenv: ruby version manager
-[[ -d $HOME/.rbenv ]] || curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-installer | bash
+[[ -d $HOME/.rbenv ]] || curl -fsSL https://github.com/rbenv/rbenv-installer/raw/HEAD/bin/rbenv-installer | bash #curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-installer | bash
 eval "$(rbenv init -)"
 
 export PATH="/usr/local/opt/llvm/bin:$PATH"
