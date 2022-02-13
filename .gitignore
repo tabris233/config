@@ -1,4 +1,7 @@
 .vscode/
 
+neovim/autoload
 nvim/autoload
 nvim/node_modules/
+ranger/__pycache__/*.pyc
+ranger/*/__pycache__/*.pyc

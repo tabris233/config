@@ -1,6 +1,7 @@
 source ~/.config/nvim/plug/plug_settings/coc.nvim
 " source ~/.config/nvim/plug/plug_settings/vim-startify.nvim
-source ~/.config/nvim/plug/plug_settings/spaceline.nvim
+" source ~/.config/nvim/plug/plug_settings/spaceline.nvim
+source ~/.config/nvim/plug/plug_settings/vim-airline-themes.nvim
 source ~/.config/nvim/plug/plug_settings/rainbow.nvim
 source ~/.config/nvim/plug/plug_settings/syntastic.nvim
 source ~/.config/nvim/plug/plug_settings/accelerated-jk.nvim
