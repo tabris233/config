@@ -2,6 +2,7 @@
 -- lua/custom/chadrc.lua
 
 local M = {}
+local userPlugins = require "custom.plugins"
 
 -- make sure you maintain the structure of `core/default_config.lua` here,
 -- example of changing theme:
@@ -27,6 +28,7 @@ M.plugins = {
     default_plugin_config_replace = {
         dashboard = "custom.configs.dashboard",
     },
+    install = userPlugins
 }
 
 return M
