@@ -4,14 +4,14 @@ env:
 
 # 默认窗口无标题栏，16:9的窗口比例启动
 window:
-    decorations: full 
+    decorations: full
     dimensions:
       columns: 100
       lines: 30
-    startup_mode: Windowed 
+    startup_mode: Windowed
 
     # 背景半透明，方便抄代码
-    opacty: 0.9
+    opacity: 0.9
 
 # 实时重载配置文件，不用重启测试配置选项
 live_config_reload: true
@@ -34,7 +34,7 @@ font:
     style: Bold Italic
 
   # 字大小
-  size: 14.0 
+  size: 14.0
 
   offset:
     x: 0
