@@ -8,7 +8,7 @@ local userPlugins = require "custom.plugins"
 -- example of changing theme:
 
 M.ui = {
-    theme = "monekai",
+    theme = "onedark",
 }
 
 M.options = {
@@ -18,7 +18,7 @@ M.options = {
 M.plugins = {
     status = {
         colorizer = true,
-        dashboard = true
+        alpha = true
     },
     options = {
         statusline = {
@@ -26,7 +26,8 @@ M.plugins = {
         }
     },
     default_plugin_config_replace = {
-        dashboard = "custom.configs.dashboard",
+        -- dashboard = "custom.configs.dashboard",
+        alpha = "custom.configs.alpha",
     },
     install = userPlugins
 }

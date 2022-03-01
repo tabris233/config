@@ -1,16 +1,22 @@
+# 变量
+env:
+  TERM: xterm-256color # .tmux 需要
+
 # 默认窗口无标题栏，16:9的窗口比例启动
 window:
-    # decorations: "none"
-    # dimensions:
-      # columns: 120
-      # lines: 30
-    startup_mode: Maximized
+    decorations: full 
+    dimensions:
+      columns: 100
+      lines: 30
+    startup_mode: Windowed 
 
     # 背景半透明，方便抄代码
     opacty: 0.9
 
 # 实时重载配置文件，不用重启测试配置选项
 live_config_reload: true
+
+# draw_bold_text_with_bright_colors: true
 
 # 设置字体
 font:
@@ -36,6 +42,8 @@ font:
   glyph_offset:
     x: 0
     y: 0
+
+  use_thin_strokes: true
 
 schemes:
   # Colors (One Light - https://github.com/atom/atom/tree/master/packages/one-light-syntax)
@@ -80,3 +88,6 @@ schemes:
       white:      '#828997' # mono-2
 
 colors: *dark
+
+key_bindings:
+  - { key: Return,          mods: Command,              action: ToggleFullscreen}

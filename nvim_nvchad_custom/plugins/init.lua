@@ -4,13 +4,13 @@ return {
       event = "InsertEnter",
    },
 
-   {
-      "rhysd/accelerated-jk",
-      opt = true,
-      config = function ()
-         require('rhysd/accelerated-jk').setup()
-      end
-   },
+   -- {
+   --    "rhysd/accelerated-jk",
+   --    opt = true,
+   --    config = function ()
+   --       require('rhysd/accelerated-jk').setup()
+   --    end
+   -- },
 
    -- 自动保存文件插件
    {
@@ -34,13 +34,37 @@ return {
       end,
    },
 
+   {
+      "PHSix/faster.nvim",
+      event = {"VimEnter *"},
+      config = function()
+         -- vim.api.nvim_set_keymap('n', 'j', '<Plug>(faster_move_j)', {noremap=false, silent=true})
+         -- vim.api.nvim_set_keymap('n', 'k', '<Plug>(faster_move_k)', {noremap=false, silent=true})
+         -- or 
+         vim.api.nvim_set_keymap('n', 'j', '<Plug>(faster_move_gj)', {}) -- {noremap=false, silent=true})
+         vim.api.nvim_set_keymap('n', 'k', '<Plug>(faster_move_gk)', {}) -- {noremap=false, silent=true})
+         -- if you need map in visual mode
+         vim.api.nvim_set_keymap('v', 'j', '<Plug>(faster_vmove_j)', {noremap=false, silent=true})
+         vim.api.nvim_set_keymap('v', 'k', '<Plug>(faster_vmove_k)', {noremap=false, silent=true})
+      end
+   },
+
    -- {
-   --    "xiyaowong/accelerated-jk.nvim",
+   --   "xiyaowong/accelerated-jk.nvim",
    --    opt = true,
-   --    setup = function ()
-   --       require('xiyaowong/accelerated-jk.nvim').setup()
+   --    config = function ()
+   --       require('accelerated-jk').setup()
    --    end
+   --  
    -- },
+
+   {
+      'glacambre/firenvim',
+      run = function()
+         vim.fn['firenvim#install'](0)
+      end
+   },
+
 
    -- {
    --    "user or orgname/reponame",
